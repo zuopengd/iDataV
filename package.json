@@ -1,6 +1,6 @@
 {
   "name": "@zuopengd/data-view",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -8,7 +8,15 @@
     "type": "git",
     "url": "git+https://github.com/zuopengd/iDataV.git"
   },
-  "keywords": [],
+  "keywords": [
+    "vue-bigscreen",
+    "bigscreen",
+    "davav",
+    "vue3-data-view",
+    "vue-data-view",
+    "vue-datav",
+    "vue.js"
+  ],
   "author": "Zuo Peng",
   "license": "MIT",
   "publishConfig": {
