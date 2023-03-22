@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-npm install --save iDataV
+npm install --save @zuopengd/data-view
 ```
 
 ## 全局引入
