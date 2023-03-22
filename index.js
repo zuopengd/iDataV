@@ -1,4 +1,3 @@
-import type { App } from 'vue'
 import components from './src/components'
 
 export default {

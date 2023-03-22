@@ -1,4 +1,3 @@
-import type { App } from 'vue'
 import ZpBorderBox100 from './ZpBorderBox100.vue'
 import ZpCharts from './ZpCharts.vue'
 import ZpDigitalFlop from './ZpDigitalFlop.vue'
