@@ -10,10 +10,8 @@ npm install --save iDataV
 
 ## 全局引入
 
-把安装好的 vue-pdf3 拷贝到 src/components 中
-
 ```js
-import iDataV from './components/data-view'
+import iDataV from 'iDataV'
 
 app.use(iDataV)
 ```
