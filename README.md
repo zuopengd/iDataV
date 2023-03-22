@@ -11,7 +11,7 @@ npm install --save iDataV
 ## 全局引入
 
 ```js
-import iDataV from 'iDataV'
+import iDataV from '@zuopengd/data-view'
 
 app.use(iDataV)
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "iDataV",
-  "version": "1.0.0",
+  "name": "@zuopengd/data-view",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -11,6 +11,9 @@
   "keywords": [],
   "author": "Zuo Peng",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "echarts": "^5.4.1",
     "gsap": "^3.11.5",
