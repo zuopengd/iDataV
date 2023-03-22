@@ -1,0 +1,18 @@
+{
+  "name": "data-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Zuo Peng",
+  "license": "MIT",
+  "dependencies": {
+    "echarts": "^5.4.1",
+    "gsap": "^3.11.5",
+    "sass": "^1.59.3",
+    "sass-loader": "^13.2.1"
+  }
+}
