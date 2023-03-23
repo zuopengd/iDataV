@@ -33,7 +33,7 @@ watch(
     if (chart) {
       let option = {}
       if (value) option = value
-      console.log(1111, option, chart)
+      // console.log(1111, option, chart)
       chart.setOption(option, true)
     }
   }
