@@ -8,6 +8,12 @@
 npm install --save @zuopengd/data-view
 ```
 
+## 更新到最新版本
+
+```bash
+npm update @zuopengd/data-view
+```
+
 ## 全局引入
 
 ```js

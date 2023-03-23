@@ -22,6 +22,14 @@ const props = defineProps({
     default: true
   },
   /**
+   * 小数支持
+   */
+  decimal: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * css配置
    */
   style: {
@@ -37,8 +45,12 @@ const data = reactive({
 })
 
 const num = computed(() => {
+  let num = data.num
+  if (!props.decimal) {
+    num = Math.ceil(num)
+  }
   // toLocaleString 千位分割
-  return props.kilobit ? Math.ceil(data.num).toLocaleString() : data.num
+  return props.kilobit ? num.toLocaleString() : num
 })
 
 watch(
