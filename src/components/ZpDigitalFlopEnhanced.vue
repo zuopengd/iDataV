@@ -15,6 +15,13 @@ const props = defineProps({
     default: 0
   },
   /**
+   * 千位分割
+   */
+  kilobit: {
+    type: Boolean,
+    default: true
+  },
+  /**
    * css配置
    */
   style: {
@@ -31,7 +38,7 @@ const data = reactive({
 
 const num = computed(() => {
   // toLocaleString 千位分割
-  return Math.ceil(data.num).toLocaleString()
+  return props.kilobit ? Math.ceil(data.num).toLocaleString() : data.num
 })
 
 watch(
