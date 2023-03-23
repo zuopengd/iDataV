@@ -18,7 +18,7 @@ const resize = useAutoresize()
 const id = uuid(false)
 const chartRef = ref(`chart-${id}`)
 
-let chart = ref()
+let chart: any
 
 const props = defineProps({
   option: {
@@ -30,16 +30,16 @@ const props = defineProps({
 watch(
   () => props.option,
   (value) => {
-    let option = {}
-    if (value) option = value
-    console.log(1111, option, chart.value)
-    chart.value.setOption(option, true)
+    if (chart) {
+      let option = {}
+      if (value) option = value
+      console.log(1111, option, chart)
+      chart.setOption(option, true)
+    }
   }
 )
 
 onMounted(() => {
-  // console.log(1111, instance?.refs)
-
   resize.then((data: any) => {
     data.autoResizeMixinInit(instance?.refs[chartRef.value], afterAutoResizeMixinInit, onResize)
   })
@@ -49,11 +49,11 @@ const afterAutoResizeMixinInit = () => {
   initChart()
 }
 const initChart = () => {
-  chart.value = echarts.init(instance?.refs[chartRef.value] as unknown as HTMLDivElement)
+  chart = echarts.init(instance?.refs[chartRef.value] as unknown as HTMLDivElement)
 
   if (!props.option) return
 
-  chart.value.setOption(props.option)
+  chart.setOption(props.option)
 }
 
 const onResize = () => {
