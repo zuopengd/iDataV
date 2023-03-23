@@ -30,10 +30,10 @@ const props = defineProps({
 watch(
   () => props.option,
   (value) => {
-    // let option = {}
-    // if (value) option = value
-    // console.log(1111, option, chart.value)
-    // chart.value.setOption(option, true)
+    let option = {}
+    if (value) option = value
+    console.log(1111, option, chart.value)
+    chart.value.setOption(option, true)
   }
 )
 
