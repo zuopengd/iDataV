@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, getCurrentInstance } from 'vue'
+import { ref, watch, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 import { uuid } from '../util'
 import { useAutoresize } from '../util/autoResize'
 import * as echarts from 'echarts'
@@ -20,6 +20,8 @@ const chartRef = ref(`chart-${id}`)
 
 let chart: any
 
+let autoSwitchIntelval: any = []
+
 const props = defineProps({
   option: {
     type: Object,
@@ -27,6 +29,10 @@ const props = defineProps({
   },
   callback: {
     type: Function,
+    default: null
+  },
+  autoSwitch: {
+    type: Array,
     default: null
   }
 })
@@ -48,6 +54,10 @@ onMounted(() => {
   })
 })
 
+onUnmounted(() => {
+  clearAutoSwitchIntelval()
+})
+
 const afterAutoResizeMixinInit = () => {
   initChart()
 }
@@ -58,11 +68,50 @@ const initChart = () => {
 
   chart.setOption(props.option)
 
+  props.autoSwitch && autoSwitch()
+
   props.callback && props.callback(chart)
 }
 
 const onResize = () => {
   if (!chart) return
+}
+
+const autoSwitch = () => {
+  const { option, autoSwitch } = props
+  let indexs = new Array(autoSwitch.length).fill(0)
+  autoSwitch.map((item: any, index: number) => {
+    const { seriesIndex, timeout } = item
+
+    let interval = setInterval(() => {
+      console.log(123132)
+
+      const length = option.series[seriesIndex].data.length
+      if (indexs[index] < length) {
+        chart.dispatchAction({ type: 'downplay', seriesIndex: seriesIndex })
+        chart.dispatchAction({
+          type: 'highlight',
+          seriesIndex: seriesIndex,
+          dataIndex: indexs[index]
+        })
+        chart.dispatchAction({
+          type: 'showTip',
+          seriesIndex: seriesIndex,
+          dataIndex: indexs[index]
+        })
+        indexs[index]++
+      } else {
+        indexs[index] = 0
+      }
+    }, timeout)
+    autoSwitchIntelval.push(interval)
+  })
+}
+
+const clearAutoSwitchIntelval = () => {
+  autoSwitchIntelval.map((item: any) => {
+    clearInterval(item)
+  })
 }
 </script>
 
