@@ -84,8 +84,6 @@ const autoSwitch = () => {
     const { seriesIndex, timeout } = item
 
     let interval = setInterval(() => {
-      console.log(123132)
-
       const length = option.series[seriesIndex].data.length
       if (indexs[index] < length) {
         chart.dispatchAction({ type: 'downplay', seriesIndex: seriesIndex })
