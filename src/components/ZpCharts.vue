@@ -24,6 +24,10 @@ const props = defineProps({
   option: {
     type: Object,
     default: null
+  },
+  callback: {
+    type: Function,
+    default: null
   }
 })
 
@@ -33,7 +37,6 @@ watch(
     if (chart) {
       let option = {}
       if (value) option = value
-      // console.log(1111, option, chart)
       chart.setOption(option, true)
     }
   }
@@ -54,11 +57,12 @@ const initChart = () => {
   if (!props.option) return
 
   chart.setOption(props.option)
+
+  props.callback && props.callback(chart)
 }
 
 const onResize = () => {
   if (!chart) return
-  // chart.value.resize()
 }
 </script>
 
